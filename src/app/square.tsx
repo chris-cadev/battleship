@@ -42,16 +42,9 @@ const SquareValueColorMap: Record<SquareValue, string> = {
     nothing: 'transparent'
 }
 
-export class Square {
+export type SquareType = {
     position: [number, number];
     value: SquareValue;
-    constructor(
-        position: [number, number],
-        value: SquareValue = SquareValue.Nothing
-    ) {
-        this.position = position;
-        this.value = value;
-    }
 }
 
 export const SquareRender: FC<{

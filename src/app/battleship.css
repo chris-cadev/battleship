@@ -7,11 +7,15 @@ main {
 }
 
 .board {
+  display: "flex";
+  gap: "3px";
+  flex-direction: column;
 }
 
 .line {
   display: flex;
   align-items: center;
+  gap: "3px";
 }
 
 .square {
