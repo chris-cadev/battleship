@@ -1,10 +1,17 @@
+'use client'
+
 import './battleship.css';
-import { BoardRender } from './board';
+import { Board, BoardRender } from './board';
+
+const DEFAULT_WIDTH = 20;
+const DEFAULT_HEIGHT = DEFAULT_WIDTH;
+
+const board = new Board(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 
 export default function Home() {
   return (
     <main>
-      <BoardRender size={[10, 10]} />
+      <BoardRender squares={board.squares} onSquareClick={board.handleSquareClick} />
     </main>
   );
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import { FC } from "react";
 import { randomValueFromEnum } from "./utils";
 
@@ -25,9 +27,8 @@ enum SquareValue {
     Hit = Shot.Hit,
 }
 
-export const randomSquareValue = () => randomValueFromEnum(SquareValue) as SquareValue;
-
-
+export const randomSquareValue = () =>
+    randomValueFromEnum(SquareValue) as SquareValue;
 
 
 const SquareValueColorMap: Record<SquareValue, string> = {
@@ -44,12 +45,26 @@ const SquareValueColorMap: Record<SquareValue, string> = {
 export class Square {
     position: [number, number];
     value: SquareValue;
-    constructor(position: [number, number], value: SquareValue = SquareValue.Nothing) {
+    constructor(
+        position: [number, number],
+        value: SquareValue = SquareValue.Nothing
+    ) {
         this.position = position;
         this.value = value;
     }
 }
 
-export const SquareRender: FC<{ value: SquareValue, positon: [number, number] }> = ({ value }) => (
-    <div className="square" style={{ background: SquareValueColorMap[value] }}></div>
-)
+export const SquareRender: FC<{
+    value: SquareValue
+    position: [number, number]
+    onClick?: () => void
+}> = ({ value, onClick }) => {
+    const background = SquareValueColorMap[value]
+    return (
+        <div
+            className="square"
+            style={{ background }}
+            onClick={onClick}
+        />
+    )
+}
