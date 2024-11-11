@@ -1,0 +1,9 @@
+.line { 
+    display: flex;
+    align-items: center;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+}
