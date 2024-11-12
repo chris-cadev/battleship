@@ -1,25 +1,88 @@
+:root {
+  --square-size: 2em;
+  --squares-separation: 16px;
+  --primary-color: #76bcfa;
+  --secondary-color: #188df6;
+  --tertiary-color: #76bcfa00;
+}
+
 main {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  gap: calc(var(--squares-separation) * 2);
   justify-content: center;
   align-items: center;
 }
 
 .board {
-  display: "flex";
-  gap: "3px";
+  padding: var(--squares-separation);
+  border: var(--squares-separation) solid #032b4f;
+  background: #188df6;
+  display: flex;
+  gap: var(--squares-separation);
   flex-direction: column;
 }
 
 .line {
   display: flex;
   align-items: center;
-  gap: "3px";
+  gap: var(--squares-separation);
 }
 
 .square {
-  width: 20px;
-  height: 20px;
+  width: var(--square-size);
+  height: var(--square-size);
+  border-radius: 4px;
+  outline: 2px solid var(--secondary-color);
+  background: var(--primary-color);
   cursor: pointer;
+  animation: float 4s ease-in-out infinite,
+    border-color-change 6s linear infinite;
+}
+
+/* Floating effect */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(var(--square-size) / 8));
+  }
+}
+
+/* Color-changing border animation */
+@keyframes border-color-change {
+  0% {
+    outline-color: var(--secondary-color);
+  }
+  33% {
+    outline-color: var(--tertiary-color);
+  }
+  66% {
+    outline-color: var(--primary-color);
+  }
+  100% {
+    outline-color: var(--secondary-color);
+  }
+}
+
+/* Add hover effect to enhance interactivity */
+.square:hover {
+  animation: float 2s ease-in-out infinite,
+    border-color-change 3s linear infinite,
+    scale-pulse 0.5s ease-in-out infinite;
+}
+
+/* Scale pulse on hover */
+@keyframes scale-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }

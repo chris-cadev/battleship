@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { randomSquareValue, type SquareType, SquareRender } from "./square";
+import { randomSquareValue, type SquareType, Square } from "./square";
 
 export const Board: React.FC<{ width: number; height: number }> = ({ width, height }) => {
     const [squares, setSquares] = useState<SquareType[][]>(() =>
@@ -29,7 +29,7 @@ export const Board: React.FC<{ width: number; height: number }> = ({ width, heig
             {squares.map((line, y) => (
                 <div className="line" key={y}>
                     {line.map((square, x) => (
-                        <SquareRender
+                        <Square
                             key={`${x}-${y}`}
                             value={square.value}
                             position={square.position}

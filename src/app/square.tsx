@@ -32,14 +32,16 @@ export const randomSquareValue = () =>
 
 
 const SquareValueColorMap: Record<SquareValue, string> = {
-    miss: 'gray',
-    hit: 'red',
-    small: 'dimgray',
-    destroyer: 'steelblue',
-    submarine: 'seagreen',
-    aircraft: 'lightsalmon',
-    battleship: 'indianred',
-    nothing: 'transparent'
+    nothing: 'transparent',
+
+    miss: 'white',
+    hit: 'Crimson',
+
+    small: 'lightgray',
+    destroyer: 'lightgray',
+    submarine: 'lightgray',
+    aircraft: 'lightgray',
+    battleship: 'lightgray',
 }
 
 export type SquareType = {
@@ -47,7 +49,7 @@ export type SquareType = {
     value: SquareValue;
 }
 
-export const SquareRender: FC<{
+export const Square: FC<{
     value: SquareValue
     position: [number, number]
     onClick?: () => void
